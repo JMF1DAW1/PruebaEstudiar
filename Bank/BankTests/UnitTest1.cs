@@ -24,5 +24,18 @@ namespace BankTests
 
             Assert.AreEqual(expected, actual, 0.001, "Error");
         }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        public void DebitAmountMenorque0()
+        {
+            // preparación del caso de prueba 
+            double beginningBalance = 12;
+            double debitAmount = -1;
+            BankAccount account = new BankAccount("Mr. Bryan Walton", beginningBalance);
+
+            // acción a probar
+            account.Debit(debitAmount);
+        }
     }
 }
